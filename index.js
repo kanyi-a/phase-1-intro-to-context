@@ -1,6 +1,8 @@
 /* Your Code Here */
+//arguments
 let createEmployeeRecord = function(row){
     return {
+        //js objects with keys
         firstName: row[0],
         familyName: row[1],
         title: row[2],
@@ -9,12 +11,14 @@ let createEmployeeRecord = function(row){
         timeOutEvents: []
     }
 }
+//create function
 
 let createEmployeeRecords = function(employeeRowData) {
     return employeeRowData.map(function(row){
         return createEmployeeRecord(row)
     })
 }
+//createTimeInEvent
 
 let createTimeInEvent = function(employee, dateStamp){
     let [date, hour] = dateStamp.split(' ')
@@ -39,7 +43,7 @@ let createTimeOutEvent = function(employee, dateStamp){
 
     return employee
 }
-
+//calculate hoursWorkedOnDate
 let hoursWorkedOnDate = function(employee, soughtDate){
     let inEvent = employee.timeInEvents.find(function(e){
         return e.date === soughtDate
@@ -51,7 +55,7 @@ let hoursWorkedOnDate = function(employee, soughtDate){
 
     return (outEvent.hour - inEvent.hour) / 100
 }
-
+//wages earned on data
 let wagesEarnedOnDate = function(employee, dateSought){
     let rawWage = hoursWorkedOnDate(employee, dateSought)
         * employee.payPerHour
